@@ -29,8 +29,19 @@ print(correlation_matrix)
 # Save the correlation matrix to a CSV file
 correlation_matrix.to_csv("correlation_matrix.csv", index=True)
 
+# Statistical Description
 wine_stats = wine_data.describe()
 wine_stats.to_csv("wine_stats.csv", index=True)
 
 print(wine_stats)
+
+# Calculate the average of flavanoids within each class
+average_flavanoids = wine_data.groupby('Class')['Flavanoids'].mean()
+average_totalphenols = wine_data.groupby('Class')['Total_Phenols'].mean()
+
+# Output the results
+print("Average Flavanoids by Class:")
+print(average_flavanoids)
+print("Average Total Phenols by Class:")
+print(average_totalphenols)
 
