@@ -8,6 +8,7 @@ Program brief description: Script for reading in dataset and finding correlation
 '''
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Define column names
 columns = [
@@ -23,8 +24,8 @@ wine_data = pd.read_csv("wine.data", names=columns)
 correlation_matrix = wine_data.corr()
 
 # Output the correlation matrix
-print("Correlation Matrix:")
-print(correlation_matrix)
+#print("Correlation Matrix:")
+#print(correlation_matrix)
 
 # Save the correlation matrix to a CSV file
 correlation_matrix.to_csv("correlation_matrix.csv", index=True)
@@ -33,15 +34,36 @@ correlation_matrix.to_csv("correlation_matrix.csv", index=True)
 wine_stats = wine_data.describe()
 wine_stats.to_csv("wine_stats.csv", index=True)
 
-print(wine_stats)
+#print(wine_stats)
 
 # Calculate the average of flavanoids within each class
 average_flavanoids = wine_data.groupby('Class')['Flavanoids'].mean()
 average_totalphenols = wine_data.groupby('Class')['Total_Phenols'].mean()
 
 # Output the results
-print("Average Flavanoids by Class:")
-print(average_flavanoids)
-print("Average Total Phenols by Class:")
-print(average_totalphenols)
+#print("Average Flavanoids by Class:")
+#print(average_flavanoids)
+#print("Average Total Phenols by Class:")
+#print(average_totalphenols)
 
+# Plot Flavanoids vs Class
+plt.subplot(1, 2, 1)
+plt.scatter(wine_data['Class'], wine_data['Flavanoids'], color='blue', alpha=0.7, label='Flavanoids')
+plt.xlabel('Class')
+plt.xticks([1, 2, 3])
+plt.ylabel('Flavanoids')
+plt.title('Flavanoids vs Class')
+plt.legend()
+
+# Plot Total Phenols vs Class
+plt.subplot(1, 2, 2)
+plt.scatter(wine_data['Class'], wine_data['Total_Phenols'], color='green', alpha=0.7, label='Total Phenols')
+plt.xlabel('Class')
+plt.xticks([1, 2, 3])
+plt.ylabel('Total Phenols')
+plt.title('Total Phenols vs Class')
+plt.legend()
+
+# Show the plot
+plt.tight_layout()
+plt.show()
