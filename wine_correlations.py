@@ -1,3 +1,12 @@
+'''
+Names: Elizabeth Boulay, Eliana Leventhal, and Gabrielle Nunez
+Course: COMSC.230.02
+Prof. Name: Dr. Rivera Morales
+Assignment: Final Project: Dataset Analysis
+Program Name: wine_correlations.py
+Program brief description: Script for reading in dataset and finding correlations between attributes. Prints statistical description as well.
+'''
+
 import pandas as pd
 
 # Define column names
